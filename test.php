@@ -8,6 +8,6 @@ require_once 'autoload.php';
 $loader = new \CITest\Frontend\Loader();
 $loader->setUrl('http://informer.gismeteo.ru/xml/27612.xml');
 $data = $loader->getData();
-assert($data);
+assert(false !== $data);
 
 echo 'OK';
