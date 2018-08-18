@@ -3,4 +3,8 @@ php:
   - '7.0'
   - '7.1'
   - '7.2'
+services:
+  - mysql
+before_install:
+  - mysql -e 'CREATE DATABASE ttci;'
 script: php -f test.php
