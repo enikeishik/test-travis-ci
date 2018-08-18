@@ -1,9 +1,8 @@
 <?php
 spl_autoload_register(
     function ($class) {
-        //BOOKMARK: use DIRECTORY_SEPARATOR instead of `/` on non *nix
-        $class = str_replace('CITest\\', 'citest/', $class);
-        $file = __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
+        $class = str_replace('CITest\\', 'citest' . DIRECTORY_SEPARATOR, $class);
+        $file = __DIR__ . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
         if (file_exists($file)) {
             require $file;
             return true;
