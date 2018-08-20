@@ -27,7 +27,7 @@ class Db extends \mysqli
         }
     }
     
-    public function getItem( $sql)
+    public function getItem(string $sql)
     {
         $result = $this->query($sql);
         if (!$result) {

@@ -15,4 +15,7 @@ $db = new \CITest\Frontend\Db();
 $items = $db->getItems('SHOW TABLES');
 assert(null !== $data);
 
+$item = $db->getItem('SELECT * FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1');
+assert('<p>Главная страница.</p>' == $item['body']);
+
 echo 'OK';
