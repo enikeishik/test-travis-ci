@@ -7,4 +7,5 @@ services:
   - mysql
 before_install:
   - mysql -e 'CREATE DATABASE ttci;'
+  - php -f init.php
 script: php -f test.php
