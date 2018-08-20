@@ -18,4 +18,8 @@ assert(null !== $data);
 $item = $db->getItem('SELECT * FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1');
 assert('<p>Главная страница.</p>' == $item['body']);
 
+$db->query('UPDATE `' . C_DB_TABLE_PREFIX . 'mainpage` SET `body`=' . "'<div>Текст главной страницы.</div>'");
+$item = $db->getItem('SELECT * FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1');
+assert('<div>Текст главной страницы.</div>' == $item['body']);
+
 echo 'OK';
