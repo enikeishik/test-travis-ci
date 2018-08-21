@@ -13,7 +13,7 @@ assert(false !== $data);
 
 $db = new \CITest\Frontend\Db();
 $items = $db->getItems('SHOW TABLES');
-assert(null !== $data);
+assert(null !== $items);
 
 $item = $db->getItem('SELECT * FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1');
 assert('<p>Главная страница.</p>' == $item['body']);
