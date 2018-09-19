@@ -8,8 +8,7 @@ services:
 before_install:
   - mysql -e 'CREATE DATABASE ttci;'
   - php -f init.php
-before_script:
-  - curl -sSfL -o ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-5.7.phar
 script:
   - php -f test.php
-  - cd tests; php codecept.phar run
+  - phpunit --version
+#  - cd tests; php codecept.phar run
