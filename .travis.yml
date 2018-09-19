@@ -10,3 +10,4 @@ before_install:
   - php -f init.php
 script:
   - php -f test.php
+  - php tests/codecept.phar run
