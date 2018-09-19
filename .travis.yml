@@ -11,4 +11,4 @@ before_install:
 script:
   - php -f test.php
   - phpunit --version
-#  - cd tests; php codecept.phar run
+  - cd tests; php codecept.phar --version
