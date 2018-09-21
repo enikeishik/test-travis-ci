@@ -35,7 +35,7 @@ class FrontendDbTest extends \Codeception\Test\Unit
         $item = $this->db->getItem('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1');
         $this->assertNotNull($item);
         $this->assertTrue(array_key_exists('id', $item));
-        $this->assertTrue(0 == $item['id']);
+        $this->assertTrue(1 == $item['id']);
         
         $item = $this->db->getItem('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=0');
         $this->assertNull($item);
