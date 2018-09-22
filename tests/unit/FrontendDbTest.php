@@ -35,7 +35,7 @@ class FrontendDbTest extends \Codeception\Test\Unit
         $item = $this->db->getItem('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1');
         $this->assertNotNull($item);
         $this->assertTrue(array_key_exists('id', $item));
-        $this->assertTrue(1 == $item['id']);
+        $this->assertEquals(1, $item['id']);
         
         $item = $this->db->getItem('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=0');
         $this->assertNull($item);
@@ -45,7 +45,7 @@ class FrontendDbTest extends \Codeception\Test\Unit
     {
         $value = $this->db->getValue('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1', 'id');
         $this->assertNotNull($value);
-        $this->assertTrue(1 == $value);
+        $this->assertEquals(1, $value);
         
         $this->assertNull($this->db->getValue('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=0', 'id'));
         $this->assertNull($this->db->getValue('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` LIMIT 1', 'id2'));
@@ -56,20 +56,20 @@ class FrontendDbTest extends \Codeception\Test\Unit
         $values = $this->db->getValues('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1', 'id');
         $this->assertNotNull($values);
         $this->assertTrue(is_array($values));
-        $this->assertTrue(1 == count($values));
-        $this->assertTrue(1 == $values[0]);
+        $this->assertEquals(1, count($values));
+        $this->assertEquals(1, $values[0]);
         
         $values = $this->db->getValues('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1', 'id', 'id');
         $this->assertNotNull($values);
         $this->assertTrue(is_array($values));
-        $this->assertTrue(1 == count($values));
+        $this->assertEquals(1, count($values));
         $this->assertTrue(array_key_exists('id1', $values));
-        $this->assertTrue(1 == $values['id1']);
+        $this->assertEquals(1, $values['id1']);
         
         $values = $this->db->getValues('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=0', 'id');
         $this->assertNotNull($values);
         $this->assertTrue(is_array($values));
-        $this->assertTrue(0 == count($values));
+        $this->assertEquals(0, count($values));
         
         $error = '';
         try {
@@ -85,24 +85,24 @@ class FrontendDbTest extends \Codeception\Test\Unit
         $items = $this->db->getItems('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1');
         $this->assertNotNull($items);
         $this->assertTrue(is_array($items));
-        $this->assertTrue(1 == count($items));
+        $this->assertEquals(1, count($items));
         $this->assertTrue(is_array($items[0]));
         $this->assertTrue(array_key_exists('id', $items[0]));
-        $this->assertTrue(1 == $items[0]['id']);
+        $this->assertEquals(1, $items[0]['id']);
         
         $items = $this->db->getItems('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=1', 'id');
         $this->assertNotNull($items);
         $this->assertTrue(is_array($items));
-        $this->assertTrue(1 == count($items));
+        $this->assertEquals(1, count($items));
         $this->assertTrue(array_key_exists('id1', $items));
         $this->assertTrue(is_array($items['id1']));
         $this->assertTrue(array_key_exists('id', $items['id1']));
-        $this->assertTrue(1 == $items['id1']['id']);
+        $this->assertEquals(1, $items['id1']['id']);
         
         $items = $this->db->getItems('SELECT `id` FROM `' . C_DB_TABLE_PREFIX . 'mainpage` WHERE `id`=0', 'id');
         $this->assertNotNull($items);
         $this->assertTrue(is_array($items));
-        $this->assertTrue(0 == count($items));
+        $this->assertEquals(0, count($items));
         
         $error = '';
         try {
@@ -115,7 +115,7 @@ class FrontendDbTest extends \Codeception\Test\Unit
     
     public function testGetLastInsertedId()
     {
-        $this->assertTrue(0 == $this->db->getLastInsertedId());
+        $this->assertEquals(0, $this->db->getLastInsertedId());
     }
     
     public function testAddEscape()
