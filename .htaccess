@@ -1,6 +1,6 @@
-Options -Indexes
-Options +FollowSymlinks
-DirectoryIndex index.php
+#Options -Indexes
+#Options +FollowSymlinks
+#DirectoryIndex index.php
 
 #ErrorDocument 401 /index.php?error=401
 #ErrorDocument 403 /index.php?error=403
