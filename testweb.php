@@ -7,4 +7,4 @@ assert_options(ASSERT_ACTIVE, true);
 define('CONTENT', 'test web content');
 
 $content = file_get_contents('http://localhost/testweb.html');
-assert(false !== strpos($content, CONTENT);
+assert(false !== strpos($content, CONTENT));
