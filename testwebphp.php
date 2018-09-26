@@ -7,3 +7,4 @@
 // mb_internal_encoding('UTF-8');
 
 echo 'test web PHP content';
+phpinfo();
