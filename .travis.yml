@@ -31,3 +31,4 @@ script:
   - cd tests
   - php codecept.phar run
   - cd ..
+  - php -f testweb.php

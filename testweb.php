@@ -2,6 +2,7 @@
 ini_set('display_errors', '1');
 ini_set('error_reporting', E_ALL);
 date_default_timezone_set('Europe/Moscow');
+assert_options(ASSERT_ACTIVE, true);
 
 define('CONTENT', 'test web content');
 
