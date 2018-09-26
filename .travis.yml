@@ -16,7 +16,7 @@ before_script:
   # enable php-fpm
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
   # - cat ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
-  - ls -la /home/travis/.phpenv/versions/7.2.10/etc/php-fpm.d
+  - sudo ls -la /home/travis/.phpenv/versions/7.2.10/etc/php-fpm.d
   - sudo a2enmod rewrite actions fastcgi alias
   - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - sudo sed -i -e "s,www-data,travis,g" /etc/apache2/envvars
