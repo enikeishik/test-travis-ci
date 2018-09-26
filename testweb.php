@@ -9,6 +9,8 @@ define('PHP_CONTENT', 'test web PHP content');
 
 $content = file_get_contents('http://localhost/testweb.html');
 assert(false !== strpos($content, CONTENT));
+var_dump($content);
 
 $content = file_get_contents('http://localhost/testwebphp.php');
 assert(false !== strpos($content, PHP_CONTENT));
+var_dump($content);
