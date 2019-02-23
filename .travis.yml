@@ -1,11 +1,13 @@
 language: php
-dist: trusty
+dist: xenial
 sudo: required
-php:
-  - '7.0'
-  - '7.1'
-  - '7.2'
-  - '7.3'
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.0
+    - php: 7.1
+    - php: 7.2
+    - php: 7.3
 services:
   - mysql
   - memcache
@@ -37,7 +39,8 @@ before_script:
   # ^^^ OK
   # - echo "extension=memcache.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   # ^^^ PHP Warning:  PHP Startup: Unable to load dynamic library 'memcache.so' ...
-  - echo 'y' | pecl install -f memcache-3.0.8
+  # - echo 'y' | pecl install -f memcache-3.0.8
+  # ^^^ /tmp/pear/install/memcache/memcache_pool.h:45:47: fatal error: ext/standard/php_smart_str_public.h: No such file or directory
 script:
   - php -f test.php
   - phpunit --version
