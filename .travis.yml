@@ -37,7 +37,7 @@ before_script:
   # ^^^ OK
   # - echo "extension=memcache.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   # ^^^ PHP Warning:  PHP Startup: Unable to load dynamic library 'memcache.so' ...
-  - pecl install memcache -y
+  - echo 'y' | pecl install memcache
 script:
   - php -f test.php
   - phpunit --version
