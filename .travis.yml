@@ -8,6 +8,8 @@ php:
   - '7.3'
 services:
   - mysql
+  - memcache
+  - memcached
 before_install:
   - mysql -e 'CREATE DATABASE ttci;'
   - php -f init.php
@@ -34,6 +36,7 @@ before_script:
   - echo "extension=memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   # ^^^ OK
   - echo "extension=memcache.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # ^^^ PHP Warning:  PHP Startup: Unable to load dynamic library 'memcache.so' ...
 script:
   - php -f test.php
   - phpunit --version
