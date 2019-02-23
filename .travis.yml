@@ -5,12 +5,14 @@ php:
   - '7.0'
   - '7.1'
   - '7.2'
+  - '7.3'
 services:
   - mysql
 before_install:
   - mysql -e 'CREATE DATABASE ttci;'
   - php -f init.php
 before_script:
+  # test apache
   - sudo apt-get update
   - sudo apt-get install apache2 libapache2-mod-fastcgi
   # enable php-fpm
@@ -27,11 +29,17 @@ before_script:
   - sudo cp -f .travis-apache.conf /etc/apache2/sites-available/000-default.conf
   - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/000-default.conf
   - sudo service apache2 restart
+  #
+  # test extensions
+  - echo "extension=memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 script:
   - php -f test.php
   - phpunit --version
-#  - cd tests; php codecept.phar --version; cd ..
+  # - cd tests; php codecept.phar --version; cd ..
   - cd tests
   - php codecept.phar run
   - cd ..
   - php -f testweb.php
+  - php -f testweb.php
+  # test extensions
+  - php -f testext.php
