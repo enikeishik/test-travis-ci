@@ -4,7 +4,8 @@ ini_set('error_reporting', E_ALL);
 date_default_timezone_set('Europe/Moscow');
 
 $m = new Memcached();
-$c = get_class($m);
-assert(Memcached::class === $c);
+assert(Memcached::class === get_class($m));
+$m = new Memcache();
+assert(Memcache::class === get_class($m));
 
 echo 'OK';
